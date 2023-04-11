@@ -32,22 +32,25 @@ router.get('/data', async (req, res) => {
 router.get('/', async (req, res) => {
 	// res.json({success: true})
 	try {
-		const login = {
-			"company": API_COMPANY_SIMPLY,
-			"login": API_LOGIN_SIMPLY,
-			"password": API_SIMPLY_PWD
-		}
-		const options = {
-			json: true,
-		}
-		const apiRes = await needle('post', `https://user-api-v2.simplybook.me/admin/auth`, login, options)
+		res.json({
+			'hello':'hi'
+		})
+		// const login = {
+		// 	"company": API_COMPANY_SIMPLY,
+		// 	"login": API_LOGIN_SIMPLY,
+		// 	"password": API_SIMPLY_PWD
+		// }
+		// const options = {
+		// 	json: true,
+		// }
+		// const apiRes = await needle('post', `https://user-api-v2.simplybook.me/admin/auth`, login, options)
 		
-		if(apiRes.statusCode === 200) {
-			const data = apiRes.body
-			res.send({ data })
-		} else {
-			res.status(apiRes.statusCode).send(response.body)
-		}
+		// if(apiRes.statusCode === 200) {
+		// 	const data = apiRes.body
+		// 	res.send({ data })
+		// } else {
+		// 	res.status(apiRes.statusCode).send(response.body)
+		// }
 		
 	} catch (error) {
 		res.status(500).json({error})

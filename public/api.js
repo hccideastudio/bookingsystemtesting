@@ -30,7 +30,7 @@ const message = document.getElementById('confirmation-message');
 
 async function authenticate() {
 
-	const accesstoken = await	fetch("/api");
+	const accesstoken = await	fetch("/.netlify/functions/api");
 // 	// const accesstoken = await	fetch("https://user-api-v2.simplybook.me/admin/auth", requestOptions);
 // 	console.log('accesstoken',accesstoken);
 	const response = await accesstoken.json();
@@ -51,7 +51,7 @@ async function authenticate() {
 // const tableName = 'All%20Members';
 
 const fetchAirtableRecords = async () => {
-	const url = `/api/data`;
+	const url = `/.netlify/functions/api/data`;
 	// const response = await axios.get(url);
 	const response = await fetch(url);
 
@@ -93,7 +93,7 @@ const columnName = "Email";
 // build the API URL
 
 const fetchAirtableRecord = async (columnValue) => {
-	const apiUrl = `/api/data?filterByFormula=${encodeURIComponent(`{${columnName}}="${columnValue}"`)}`;
+	const apiUrl = `/.netlify/functions/api/data?filterByFormula=${encodeURIComponent(`{${columnName}}="${columnValue}"`)}`;
 	const response = await fetch(apiUrl);
 
 	// const apiUrl = `https://api.airtable.com/v0/${baseId}/${tableName}?filterByFormula=${encodeURIComponent(`{${columnName}}="${columnValue}"`)}`;

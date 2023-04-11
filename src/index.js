@@ -2,19 +2,21 @@ const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
 const needle = require('needle')
+const serverless = require('serverless-http')
 
 const PORT = process.env.PORT || 5000
 
 const app = express()
 
 // Enable cors
-app.use(cors())
+// app.use(cors())
 
 // set static folder
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 // Routes
-app.use('/api', require('./routes'))
+app.use('/.netlify/functions/api', require('../routes'))
+// app.use('/api', require('./routes'))
 
 // app.use(express.json())
 // app.use('/apiSimply', async (req, res) => {
@@ -43,4 +45,6 @@ app.use('/api', require('./routes'))
 
 
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+module.exports = app
+module.exports.handler = serverless(app)
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
